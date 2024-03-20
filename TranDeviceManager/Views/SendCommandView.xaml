@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="TranDeviceManager.Views.SendCommandView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="419.423" d:DesignWidth="446.731"
+             mc:Ignorable="d">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,10">
+            <TextBox Height="30" Margin="0,0,0,10" 
+                     Text="{Binding Command, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="Send Command" Height="30" 
+                    Command="{Binding SendCommand}" />
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" Margin="0,10">
+            <StackPanel>
+                <TextBlock Text="Command Response:" FontWeight="Bold"/>
+                <TextBox IsReadOnly="True" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Margin="0,0,0,10" 
+                         Text="{Binding Response}" />
+                <TextBlock Text="Send Timestamp:" FontWeight="Bold"/>
+                <TextBox IsReadOnly="True" Margin="0,0,0,10" 
+                         Text="{Binding SendTimestamp}" />
+                <TextBlock Text="Receive Timestamp:" FontWeight="Bold"/>
+                <TextBox IsReadOnly="True" Margin="0,0,0,10" 
+                         Text="{Binding ReceiveTimestamp}" />
+                <TextBlock Text="Interval (ms):" FontWeight="Bold"/>
+                <TextBox IsReadOnly="True" 
+                         Text="{Binding Interval}" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+            <Button Content="Clear" Height="30" 
+                    Command="{Binding ClearCommand}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

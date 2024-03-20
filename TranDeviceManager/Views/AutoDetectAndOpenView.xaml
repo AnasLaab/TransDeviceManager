@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="TranDeviceManager.Views.AutoDetectAndOpenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400">
+
+    <!-- Suppression de l'instanciation directe du ViewModel dans le DataContext -->
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Button Content="Connect" Grid.Row="0" Width="200" Height="40"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                Margin="0,20,0,20"
+                Command="{Binding ConnectCommand}"/>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Detected COM Port:" Margin="0,0,0,10"/>
+            <TextBox Text="{Binding DetectedComPort, Mode=OneWay}"
+                     IsReadOnly="True" HorizontalAlignment="Center" Width="200"/>
+            <TextBlock Text="Ping Response:" Margin="0,20,0,10"/>
+            <TextBox Text="{Binding PingResponse, Mode=OneWay}"
+                     IsReadOnly="True" HorizontalAlignment="Center" Width="200"/>
+        </StackPanel>
+
+        <Button Content="Disconnect" Grid.Row="2" Width="200" Height="40"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                Margin="0,20,0,20"
+                Command="{Binding DisconnectCommand}"/>
+    </Grid>
+</UserControl>
